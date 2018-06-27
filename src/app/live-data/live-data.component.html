@@ -1,0 +1,20 @@
+<p>
+
+</p>
+
+<form>
+  <div class="form-group">
+    <label for="stock1">Select Company Stock1 Ticker</label>
+    <select #stock1 class="form-control" id="stock1" required>
+      <option *ngFor="let ticker of tickers" [value]="ticker" >{{ticker}}</option>
+    </select>
+  </div>
+
+
+  <button class="btn btn-success" (click)="live(stock1.value)">Live Data</button>
+</form>
+<p>
+
+</p>
+<div #chart></div>
+<div [chart]="stock"></div>

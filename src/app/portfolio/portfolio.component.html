@@ -1,0 +1,50 @@
+<p>
+  
+</p>
+<form>
+
+
+  <div class="form-group">
+      <label for="username">Enter Employee ID</label>
+      <input #username type="text" class="form-control" id="username" name="username" required/>
+    </div>
+
+    <button class="btn btn-success" (click)="getPortfolio(username.value)">Get Portfolio</button>
+</form>
+<p>
+  
+</p>
+
+
+<form *ngIf="tickers" >
+
+
+  <div class="form-group">
+      <label for="ticker">ADD Tickers</label>
+      <select #tickerName class="form-control" id="ticker" required>
+        <option  *ngFor="let ticker of tickers" [value]="ticker" >{{ticker}}</option>
+      </select>
+    </div>
+
+    <button class="btn btn-success" (click)="addToPortfolio(tickerName.value)">Add</button>
+</form>
+
+<form *ngIf="portfolio" (ngSubmit)="submitPortfolio()" #portfolioForm="ngForm">
+    <div class="form-group">
+      <div *ngFor="let p of portfolio">
+  
+        <label for="{{p[0]}}">{{p[0]}} &nbsp; &nbsp; &nbsp; </label>
+        <input #{{p[0]}} type="number" class="form-control" id="{{p[0]}}" [(value)]="p[1]" [name]="p[0]" (change)="onChangeHandler($event)" max="100.0" />
+        <button class="btn btn-danger" (click)="deleteTicker(p[0])">Delete</button>
+      </div>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-success" >Submit</button>
+    </div>
+</form>
+<p *ngIf="errorMSG1" style="color:red;">{{errorMSG1}}</p>
+<p *ngIf="errorMSG2" style="color:red;">{{errorMSG2}}</p>
+<div [chart]="stock"></div>
+
+
+

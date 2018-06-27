@@ -1,0 +1,19 @@
+
+<input id="cin" name="cin" type="file" (change)="fileChangeEvent($event)" placeholder="Upload a file..." multiple/>
+
+<button type="button" class="btn btn-success btn-s" (click)="upload()">
+    <i class="glyphicon glyphicon-open-file"></i>&nbsp;Upload
+</button>
+<p> </p>
+<div class="alert alert-warning">* upto 20 files. </div>
+
+<h3> Or, Delete all the data.</h3>
+<button type="button" class="btn btn-danger btn-s" (click)="delete()">
+  Delete
+</button>
+<p></p>
+<p *ngIf="successMsg" style="color:red;">
+*{{successMsg}}
+</p>
+
+

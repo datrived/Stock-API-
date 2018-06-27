@@ -1,0 +1,37 @@
+
+
+
+<div class="container">
+    <h1></h1>
+    <form>
+
+
+        <div class="form-group">
+            <label for="company">Select Company</label>
+            <select #companyName class="form-control" id="company" required>
+              <option *ngFor="let company of companies" [value]="company" >{{company}}</option>
+            </select>
+          </div>
+
+          <button class="btn btn-success" (click)="getCompanyDetail(companyName.value)">See Detail</button>
+  </form>
+
+  <div *ngIf="companyDetail">
+
+    <h4>{{companyDetail.name}}</h4>
+    <p><b>Description: </b> {{companyDetail.description}}</p>
+    <p><b>GICS Sector: </b>{{companyDetail.sector}}</p>
+    <p><b>GICS Industry Name: </b>{{companyDetail.industry}}</p>
+    <p><b>GICS Industry Group: </b>{{companyDetail.industry_grp}}</p>
+    <p><b>GICS Sub Industry: </b>{{companyDetail.sub_industry_grp}}</p>
+   <div [chart]="stock"></div>
+    
+    
+    
+  
+
+
+
+  </div>
+
+  
